@@ -1,0 +1,13 @@
+# local packages
+-e .
+
+#other dependencies
+tqdm
+dvc
+pandas
+numpy
+SciPy
+PyYAML
+scikit-learn
+lxml
+botcore

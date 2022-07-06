@@ -1,0 +1,20 @@
+stages:
+  prepare_data:
+    cmd: python src/stage01_prepare.py --config=configs/config.yaml --params=params.yaml
+    deps:
+      - src/stage01_prepare.py
+      - data/data.xml
+      - src/utils/common_utils.py
+      - src/utils/data_management.py
+      - configs/config.yaml
+      - params.yaml
+    params:
+      - prepare.seed
+      - prepare.split
+    
+    outs:
+      - artifacts/prepared_data/train.tsv
+      - artifacts/prepared_data/test.tsv
+
+    
+
