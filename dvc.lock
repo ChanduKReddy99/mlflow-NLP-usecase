@@ -88,3 +88,33 @@ stages:
     - path: artifacts/model/model.pkl
       md5: bea08373e52c57a634738907e0928ab6
       size: 3279958
+  run_plots_command:
+    cmd: dvc plots diff
+  test:
+    cmd: python src/stage04_test.py --config=configs/config.yaml
+    deps:
+    - path: artifacts/features/test.pkl
+      md5: cc643d96eaa1114e3b73eb9df1551dba
+      size: 3072661
+    - path: artifacts/model/model.pkl
+      md5: bea08373e52c57a634738907e0928ab6
+      size: 3279958
+    - path: configs/config.yaml
+      md5: cfe770e32d8c1caab89cfab619ac8a2a
+      size: 432
+    - path: src/stage04_test.py
+      md5: 1f6fb6ce0b175b36e535cb9883a8f53b
+      size: 2942
+    - path: src/utils/common_utils.py
+      md5: 45103e7717030675615da8ee3972a89e
+      size: 994
+    outs:
+    - path: prc.json
+      md5: 74d8058e6f76f6710f72fed31be0f893
+      size: 123921
+    - path: roc.json
+      md5: e0be11fc92e703d97520fdd483c5ee5a
+      size: 113392
+    - path: scores.json
+      md5: b1ab27918810dabcf6c00413a98aebdc
+      size: 80
