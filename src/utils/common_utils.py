@@ -15,6 +15,17 @@ def create_dirs(path_to_dirs: list) -> dict:
         os.makedirs(path, exist_ok=True)
         logging.info(f' created required directories at: {path}')
 
+def get_df(path_to_data: str, sep: str="\t") -> pd.DataFrame:
+    df = pd.read_csv(
+        path_to_data,
+        encoding="utf-8",
+        header=None,
+        delimiter=sep,
+        names=["id", "label", "text"],
+    )
+    logging.info(f"The input data frame {path_to_data} size is {df.shape}\n")
+    return df
+
 
 
 
