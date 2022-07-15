@@ -7,7 +7,7 @@ import joblib
 import sklearn.metrics as metrics
 import math
 from src.utils.common_utils import read_yaml, save_json
-
+import mlflow
 
 STAGE= 'STAGE-FOUR'
 
@@ -45,6 +45,8 @@ def main(config_path):
 
     avg_precision = metrics.average_precision_score(labels, predictions)
     roc_auc= metrics.roc_auc_score(labels, predictions)
+    mlflow.log_metric('avg_precision', avg_precision)
+    mlflow.log_metric('roc_auc', roc_auc)
 
     scores= {
         'avg_precision': avg_precision,
@@ -76,6 +78,8 @@ def main(config_path):
     }
 
     save_json(ROC_json_path, roc_data)
+
+    mlflow.sklearn.eval_and_log_metrics(model, predictions, labels, prefix='eval_')
 
 
 if __name__ == '__main__':

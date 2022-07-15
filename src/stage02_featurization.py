@@ -5,7 +5,7 @@ import logging
 from src.utils.common_utils import read_yaml, create_dirs, get_df
 from src.utils.featurize import save_matrix
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-
+import mlflow
 
 STAGE= 'STAGE-TWO'
 
@@ -34,6 +34,8 @@ def main(config_path, params_path):
 
     max_features= params['featurize']['max_features']
     ngrams= params['featurize']['ngrams']
+    mlflow.log_param('max_features', max_features)
+    mlflow.log_param('ngrams', ngrams)
     
     # applying word embedding to train data
     df_train= get_df(train_data_path)

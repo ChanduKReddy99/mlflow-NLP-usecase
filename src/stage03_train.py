@@ -6,6 +6,8 @@ import joblib
 import numpy as np
 from src.utils.common_utils import read_yaml, create_dirs
 from sklearn.ensemble import RandomForestClassifier
+import mlflow
+
 
 STAGE= 'STAGE-THREE'
 
@@ -44,6 +46,10 @@ def main(config_path, params_path):
     seed= params['train']['seed']
     n_est= params['train']['n_est']
     min_split= params['train']['min_split']
+    mlflow.log_param('seed', seed)
+    mlflow.log_param('n_est', n_est)
+    mlflow.log_param('min_split', min_split)
+    # mlflow.log_params(params['train']) we can try this approach as well (get the dtails from params.yaml file)
 
     model= RandomForestClassifier(
         n_estimators= n_est, min_samples_split= min_split, n_jobs= 2, random_state= seed
@@ -51,7 +57,8 @@ def main(config_path, params_path):
 
     model.fit(X, labels)
 
-    joblib.dump(model, model_path)
+    # joblib.dump(model, model_path)
+    mlflow.sklearn.log_model(model, 'model', registered_model_name= 'model_name')
 
 
 if __name__ == '__main__':

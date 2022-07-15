@@ -133,3 +133,6 @@ data/
 
 #ignore mlruns directory
 mlruns/
+
+#ignore vscode directory
+.vscode/

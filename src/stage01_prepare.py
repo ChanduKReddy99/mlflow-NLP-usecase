@@ -4,6 +4,7 @@ import argparse
 from src.utils.common_utils import read_yaml, create_dirs
 from src.utils.data_management import process_posts
 import random
+import mlflow
 
 
 STAGE= 'STAGE-ONE'
@@ -32,6 +33,8 @@ def main(config_path, params_path):
 
     split= params['prepare']['split']
     seed= params['prepare']['seed']
+    mlflow.log_param('split', split)
+    mlflow.log_param('seed', seed)
 
     random.seed(seed)
 
