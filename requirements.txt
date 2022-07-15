@@ -2,8 +2,8 @@
 -e .
 
 #other dependencies
+mlflow
 tqdm
-dvc
 pandas
 numpy
 SciPy

@@ -6,14 +6,13 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 
-REPO_NAME= 'NLP_usecase_DVC'
+REPO_NAME= 'mlflow-NLP-usecase'
 AUTHOR_USER_NAME= 'ChanduKReddy99'
 AUTHOR_EMAIL= 'chanduk.amical@gmail.com'
 SRC_REPO= 'src'
 PYTHON_REQUIRES= '>=3.6'
 LIST_OF_REQUIREMENTS= [
     'tqdm',
-    'dvc',
     'pandas',
     'numpy',
     'SciPy',

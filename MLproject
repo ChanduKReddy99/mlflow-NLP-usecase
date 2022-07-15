@@ -1,0 +1,13 @@
+name: mlflow-NLP-usecase
+
+conda_env: conda.yaml
+
+entry_points:
+    main:
+
+
+    stage01:
+      parameters:
+        config: {type: string, default: configs/config.yaml}
+        params: {type: string, default: params.yaml}
+      command: python src/stage01_prepare.py --config={config} --params={params}
