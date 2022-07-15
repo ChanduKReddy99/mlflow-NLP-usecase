@@ -4,10 +4,29 @@ conda_env: conda.yaml
 
 entry_points:
     main:
+      command: 'python src/main.py'
 
 
     stage01:
       parameters:
         config: {type: string, default: configs/config.yaml}
         params: {type: string, default: params.yaml}
-      command: python src/stage01_prepare.py --config={config} --params={params}
+      command: 'python src/stage01_prepare.py --config={config} --params={params}'
+
+    stage02:
+      parameters:
+        config: {type: string, default: configs/config.yaml}
+        params: {type: string, default: params.yaml}
+      command: 'python src/stage02_featurization.py --config={config} --params={params}'
+      
+    stage03:
+      parameters:
+        config: {type: string, default: configs/config.yaml}
+        params: {type: string, default: params.yaml}
+      command: 'python src/stage03_train.py --config={config} --params={params}'
+
+    stage04:
+      parameters:
+        config: {type: string, default: configs/config.yaml}
+      command: 'python src/stage04_test.py --config={config}'
+

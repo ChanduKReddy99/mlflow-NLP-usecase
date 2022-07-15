@@ -13,6 +13,7 @@ STAGE= 'STAGE-FOUR'
 
 logging.basicConfig(
     filename= os.path.join('logs', 'running_logs.log'),
+    level= logging.INFO,
     format='[%(asctime)s: %(levelname)s: %(module)s]: %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     filemode='a',
@@ -84,7 +85,7 @@ if __name__ == '__main__':
 
     try:
         logging.info('\n***************************************')
-        logging.info(f'>>>>>>>>>>> stage {STAGE} started..... <<<<<<<<<<<<<')
+        logging.info(f'>>>>>>>>>>> stage {STAGE} started..... <<<<<<<<<<<<<\n')
         main(config_path=parsed_args.config)
         logging.info(f'>>>>>>>>>>>> stage {STAGE} completed succesfully!!...... <<<<<<<<')
 
